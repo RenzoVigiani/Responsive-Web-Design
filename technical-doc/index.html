@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav id="navbar">
+      <header>Remote Lab Documentation</header>
+      <ul>
+        <li><a class="nav-link" href="#Introduction">Introduction</a></li>
+        <li><a class="nav-link" href="#Labs">Labs</a></li>
+        <li><a class="nav-link" href="#Problems_to_resolve">Problems to resolve</a></li>
+        <li><a class="nav-link" href="#Protocol">Protocol</a></li>
+        <li><a class="nav-link" href="#Control_Systems">Control Systems</a></li>
+        <li><a class="nav-link" href="#Digital_Systems">Digital Systems</a></li>
+        <li><a class="nav-link" href="#Telecomunication">Telecomunication</a></li>
+        <li><a class="nav-link" href="#Reference">Reference</a></li>
+      </ul>
+    </nav>
+    <main id="main-doc">
+      <section class="main-section" id="Introduction">
+        <header>Introduction</header>
+        <article>
+          <p>
+            The graduation work is part of "LAB-REM FACET-UNT", a program that hopes 
+            to incorporate FACET-UNT as a node in the Collaborative Network of Remote 
+            Laboratories of CONFEDI. The objective of this program is to design, build 
+            and implement the remoteness of experimental practices in different areas 
+            of knowledge in engineering careers at FACET-UNT.
+          </p>
+          <p>
+            To carry out this program, we work in two teams. Hardware team and software team.
+          </p>
+          <ul>
+            <li>
+                Hardware team, formed by us, Electronic Engineering students, in charge 
+                of the design, development and implementation of the remotization of the 
+                different experimental practices.
+            </li>
+            <li>
+                Software team formed by students of the Computer Engineering career, is 
+                responsible for the design and implementation of the web application and 
+                user authentication. 
+            </li>
+          </ul>
+        </article>
+      </section>
+      <section class="main-section" id="Labs">
+        <header>Labs</header>
+        <article>
+            <p>We can present the following laboratories.</p>           
+            <p>
+                <b>
+                Digital systems:
+                </b>
+            </p>
+            <ul>
+                <li>UART communication test</li>
+                <li>I2C communication test.</li>
+            </ul>
+            <p>
+                <b>
+                    Telecommunications:
+                </b>
+            </p>
+            <ul>
+                <li>Point-to-point WiFi link.</li>
+                <li>Point-to-point link with software defined radio.</li>
+            </ul>
+            <p>
+                <b>
+                    Digital signal processing and control:
+                </b>
+            </p>
+            <ul>
+                <li>Subsampling, aliasing and strobe effect.</li>
+                <li>Automatic position control system</li>
+            </ul>
+            <p>
+                <b>
+                    Basic experimental physics:
+                </b>
+            </p>
+            <ul>
+                <li>Converging lens testing.</li>
+                <li>Diverging lens testing.</li>
+          </ul>
+        </article>
+      </section>
+      <section class="main-section" id="Problems_to_resolve">
+        <header>Problems to resolve</header>
+        <article>
+            <p>
+                Currently, FaCET has several on-site laboratories for students, teachers and researchers who are members of our faculty. During the period of pandemic and isolation, many students were unable to perform the laboratories due to the non-existence of remote laboratories and the impossibility of attending in person to the faculty facilities.
+            </p>
+            <p>
+                The implementation of this project allows a student from any of the universities that make up the Collaborative Network to access virtually, through a web page, to perform different laboratory practices that are physically installed in our faculty, also provides access to the manipulation of different tools and obtaining results once the experience is completed.
+            </p>
+        </article>
+      </section>
+      <section class="main-section" id="Protocol">
+        <header>Protocol</header>
+        <article>
+          <p>
+            The communication procedure is as follows. Every time you want to modify some data in the laboratory. The Server must send a...
+          </p>
+          <code>POST /HTTP/1.1 + (JSON a enviar)</code>
+          <p>
+            <b>
+                Json to send (example)
+            </b>
+          </p>
+          <code>{"Estado": [ 0, true, false], "Llaves": [ false, false ], "Analogico": [ 100, 200 ]}</code>
+          <code>{"Estado": [ 0, true, false], "Llaves": [ false, false ], "Analogico": [ 100, 200 ]}</code>
+          <code>{"Estado": [ 0, true, false], "Llaves": [ false, false ], "Analogico": [ 100, 200 ]}</code>
+
+          <p>
+            And to obtain data previews or data reporting you must send a:
+          </p>
+          <p>
+            <b>
+                Json to receive (example)
+            </b>
+          </p>
+          <code>{"Estado": [ 0, true, false], "Llaves": [ false, false ], "Analogico": [ 100, 200], "Error": 0}</code>
+          <table class="Error-table">
+            <thead>
+              <tr>
+                <th><span class="Error-table-title"></span>Error Type</th>
+                <th><span class="Error-table-title"></span>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="data">
+                <td>Error-free</td>
+                <td>0</td>
+              </tr>
+              <tr class="data">
+                <td>Frequency error</td>
+                <td>1</td>
+              </tr>
+              <tr class="data">
+                <td>Value error</td>
+                <td>2</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </article>
+      </section>
+      <section class="main-section" id="Control_Systems">
+        <header>Control Systems</header>
+        <article>
+            <p>
+              Syntax
+            </p>
+            <p>
+              <b>Estado:</b>
+              It is an array consisting of 3 elements in the following order: [Laboratory, SubLab, Start of experiment].
+            </p>
+            <table class="syntax-table">
+              <thead>
+                <tr>
+                  <th><span class="syntax-table-title"></span>Selected Laboratory</th>
+                  <th><span class="syntax-table-title">Lab num</span></th>
+                  <th><span class="syntax-table-title">SubLab</span></th>
+                  <th><span class="syntax-table-title"></span>Start of the experiment</th>
+                  <th><span class="syntax-table-title">Experiment status</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="data">
+                  <th>Subsampling, aliasing and strobe effect.</th>
+                  <td>1</td>
+                  <td>false</td>
+                  <td>false</td>
+                  <td>Finalized</td>
+                </tr>
+                <tr class="data">
+                  <th>Automatic position control system</th>
+                  <td>1</td>
+                  <td>true</td>
+                  <td>false</td>
+                  <td>Finalized</td>
+                </tr>
+                <tr class="data">
+                  <th>Subsampling, aliasing and strobe effect.</th>
+                  <td>1</td>
+                  <td>false</td>
+                  <td>true</td>
+                  <td>Initialized</td>
+                </tr>
+                <tr class="total">
+                  <th>Automatic position control system</th>
+                  <td>1</td>
+                  <td>true</td>
+                  <td>true</td>
+                  <td>Initialized</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>
+              Submuestreo, aliasing y efecto estroboscópico
+            </p>
+            <ul>
+              <li> <b>Llaves:</b> [habilitacion_agua, habilitacion_luz]</li>
+              <li><b>Analogico:</b> [frec_agua , frec_luz]</li>
+              <p></p>
+          </ul>
+          <b>Donde:</b>
+              <ul>
+                  <li>frec_agua es la frecuencia de oscilación.</li>
+                  <li>frec_luz es la frecuencia de parpadeo. Control automatico de posición</li>
+                  <li>Llaves: [habilitacion_regulacion ]</li>
+                  <li>Analogico: [exitacion, frecuencia, regulacion]</li>
+              </ul>
+          <p><b>Diagrams</b></p>
+          <img src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/Arduino-Mega-Pinout.png">
+  
+          </article>
+        </section>
+      <section class="main-section" id="Digital_Systems">
+        <header>Digital Systems</header>
+        <article>
+            <p>Syntax
+            </p>
+            <p><b>Estado: </b>It is an array consisting of 3 elements in the following order: [Laboratory, SubLab, Start of experiment].
+            </p>
+            <table class="syntax-table">
+              <thead>
+                <tr>
+                  <th><span class="syntax-table-title"></span>Selected Laboratory</th>
+                  <th><span class="syntax-table-title">Lab num</span></th>
+                  <th><span class="syntax-table-title">SubLab</span></th>
+                  <th><span class="syntax-table-title"></span>Start of the experiment</th>
+                  <th><span class="syntax-table-title">Experiment status</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="data">
+                  <th>UART communication test</th>
+                  <td>0</td>
+                  <td>false</td>
+                  <td>false</td>
+                  <td>Finalized</td>
+                </tr>
+                <tr class="data">
+                  <th>I2C communication test</th>
+                  <td>0</td>
+                  <td>true</td>
+                  <td>false</td>
+                  <td>Finalized</td>
+                </tr>
+                <tr class="data">
+                  <th>UART communication test</th>
+                  <td>0</td>
+                  <td>false</td>
+                  <td>true</td>
+                  <td>Initialized</td>
+                </tr>
+                <tr class="total">
+                  <th>I2C communication test</th>
+                  <td>0</td>
+                  <td>true</td>
+                  <td>true</td>
+                  <td>Initialized</td>
+                </tr>
+              </tbody>
+            </table>
+            <p><b>Nota:</b>Los valores booleanos se los puede recibir en cualquier forma, es decir, <i>true=1=HIGH</i> y <i>false=0=LOW</i>
+            </p>            
+            <p><b>Speed:</b> It is an integer type data that indicates the desired communication speed. *e.g.: 9600, 115200, etc.
+            </p>
+            <p><b>Elements per Laboratory - UART Laboratory</b>
+            </p>
+            <ul>
+                <li>Utiliza Cyclone II</li>
+                <li>Pulsadores: [Pulsador1, Pulsador2,Pulsador3,Pulsador4 ]</li>
+                <li>Indicadores: [indicador1, indicador2, indicador3, indicador4]</li>
+                <ul>
+                    <li>Los mismos son utilizados para representar en la API lo que se ve por la WebCam.</li>
+                </ul>            
+            </ul>
+            <p><b>Elements per Laboratory - I2C Laboratory</b>
+            </p>
+            <ul>
+                <li>Utiliza Cyclone IV</li>
+                <li>Pulsadores: [Pulsador1, Pulsador2,Pulsador3,Pulsador4 ]</li>
+                <li>Indicadores: [indicador1, indicador2, indicador3, indicador4]</li>
+                <ul>
+                    <li>Los mismos son utilizados para representar en la API lo que se ve por la WebCam.</li>
+                </ul>            
+            </ul>
+            <p><b>Serial:</b> It is a data of type "string" with a maximum size of 100 characters.
+            </p>
+        <div>
+          <p><b>Diagrams</b></p>
+            
+          <p><i>Esquematico general</i></p>
+          <img class="Diagrams" alt="Esquematico general" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/Esquematico_gral.png" width="720">
+          
+          <p><i>Esquematico</i></p>
+          <img  class="Diagrams" alt="Esquematico" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/Esquematico.png" width="720">
+          
+          <p><i>Arduino Mega 2560</i></p>
+          Pin Out 
+           <img class="Diagrams" alt = "Arduino Mega" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/Arduino-Mega-Pinout.png" width=720>
+          
+          <p><i>FPGA Cyclone II</i></p>
+          Nombre: Altera_FPGA_Board_EP2C8Q208C8 Cyclone II
+          <img  class="Diagrams" alt="Cyclone II" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/cyclone_ii.png" width="720">
+          
+          <p><i>FPGA Cyclone IV</i></p>
+          Nombre: Altera_FPGA_Board_EP4CE6E22C8 Cyclone IV
+          <img  class="Diagrams" alt="Cyclone IV" src="https://raw.githubusercontent.com/RenzoVigiani/LabRem-SistemasDig/main/Imagenes/cyclone-iv.png" width="720">   
+        </div>
+          </article>
+        </section>
+      <section class="main-section" id="Telecomunication">
+        <header>Telecomunication</header>
+        <article>            
+            <table class="syntax-table">
+                <thead>
+                  <tr>
+                    <th><span class="syntax-table-title"></span>Selected Laboratory</th>
+                    <th><span class="syntax-table-title">Lab num</span></th>
+                    <th><span class="syntax-table-title">SubLab</span></th>
+                    <th><span class="syntax-table-title"></span>Start of the experiment</th>
+                    <th><span class="syntax-table-title">Experiment status</span></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="data">
+                    <th>Point-to-point WiFi link</th>
+                    <td>0</td>
+                    <td>true</td>
+                    <td>false</td>
+                    <td>Finalized</td>
+                  </tr>
+                  <tr class="data">
+                    <th>Point-to-point WiFi link</th>
+                    <td>0</td>
+                    <td>true</td>
+                    <td>true</td>
+                    <td>Finalized</td>
+                  </tr>
+                </tbody>
+            </table>
+            <div>
+                <p><b>WIFI 2.4</b> Two servo motors are used, one for azimuth angle change and the other for elevation angle.
+                </p>
+                <p><b>Elements per Laboratory</b>
+                </p>
+                <ul>
+                    Analogico
+                    <li>Azimut: -60º to 60º</li>
+                    <li>Elevation: -30º to 30º</li>
+                </ul>
+                <p><b>Enlace Wifi 2.4 GHz</b></p>
+                  Diagrama general
+                  <img alt = "Enlace Wifi 2.4 GHz" src="https://raw.githubusercontent.com/RenzoVigiani/Laboratorios-Remotos/Telecomunicaciones/Imagenes/wifi2-4GHz.png" width=720>  
+  
+            </div>
+        </article>
+      </section>
+      <section class="main-section" id="Reference">
+        <header>Reference</header>
+        <article>
+          <ul>
+            <li>
+              All the documentation in this page is taken from
+              <a
+                href="https://github.com/RenzoVigiani"
+                target="_blank"
+                >GITHUB - Renzo</a
+              >
+            </li>
+          </ul>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
