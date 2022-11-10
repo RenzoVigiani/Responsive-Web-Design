@@ -1,4 +1,5 @@
 /** global element styling **/
+
 @import 'https://fonts.googleapis.com/css?family=Lato:400,700';
 
 * {
@@ -8,7 +9,7 @@
 }
 
 body {
-  background-color: rgb(255, 237, 189);
+  background-color: #eee;
   font-family: 'Lato', sans-serif;
 }
 
@@ -21,7 +22,7 @@ li {
 }
 
 a {
-  color: #fff;
+  color: rgb(255, 255, 255);
   text-decoration: none;
 }
 
@@ -45,6 +46,10 @@ a {
   cursor: pointer;
 }
 
+.separador{
+ height: 120px;
+}
+
 .grid {
   display: flex;
 }
@@ -57,7 +62,7 @@ header {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #444;
+  background-color: rgb(48, 45, 45);
 }
 
 @media (max-width: 600px) {
@@ -70,11 +75,11 @@ header {
   width: 60vw;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 650px) {
   .logo {
     margin-top: 15px;
     width: 100%;
-    position: relative;
+    position: fixed;
   }
 }
 
@@ -95,13 +100,15 @@ header {
   }
 }
 
+
+
 nav {
   font-weight: 400;
 }
 
 @media (max-width: 650px) {
   nav {
-    margin-top: 10px;
+    margin-top: 5px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -110,7 +117,7 @@ nav {
     padding: 0 50px;
   }
   nav li {
-    padding-bottom: 5px;
+    padding-bottom: 25px;
   }
 }
 
@@ -121,7 +128,7 @@ nav > ul {
   justify-content: space-around;
 }
 
-@media (max-width: 650px) {
+@media (max-width: 600px) {
   nav > ul {
     flex-direction: column;
   }
@@ -133,8 +140,8 @@ nav > ul {
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 200px;
-  margin-top: 150px;
+  height: 150px;
+  margin-top: 0px;
 }
 
 #hero > h2 {
@@ -149,7 +156,7 @@ nav > ul {
 }
 
 #hero input[type='submit'] {
-  max-width: 180px;
+  max-width: 200px;
   width: 100%;
   height: 30px;
   margin: 15px 0;
@@ -164,15 +171,15 @@ nav > ul {
 
 @media (max-width: 650px) {
   #hero {
-    margin-top: 120px;
+    margin-top: 20px;
   }
 }
 
-#Quienes-somos {
-  margin-top: 30px;
+#inicio {
+  margin-top: 0;
 }
 
-#Quienes-somos .icon {
+#inicio .icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -182,12 +189,12 @@ nav > ul {
 }
 
 @media (max-width: 550px) {
-  #Quienes-somos .icon {
+  #inicio .icon {
     display: none;
   }
 }
 
-#Quienes-somos .desc {
+#inicio .desc {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -197,7 +204,7 @@ nav > ul {
 }
 
 @media (max-width: 550px) {
-  #Quienes-somos .desc {
+  #inicio .desc {
     width: 100%;
     text-align: center;
     padding: 0;
@@ -206,24 +213,24 @@ nav > ul {
 }
 
 @media (max-width: 650px) {
-  #Quienes-somos {
+  #inicio {
     margin-top: 0;
   }
 }
 
-#Como-trabajamos {
+#espacio-de-trabajo {
   margin-top: 50px;
   display: flex;
   justify-content: center;
 }
 
-#Como-trabajamos > iframe {
+#espacio-de-trabajo > iframe {
   max-width: 560px;
   width: 100%;
 }
 
-#Categoria {
-  margin-top: 60px;
+#precios {
+  margin-top: 50px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -274,7 +281,7 @@ nav > ul {
 }
 
 @media (max-width: 800px) {
-  #Categoria {
+  #precios {
     flex-direction: column;
   }
   .product {
@@ -287,7 +294,7 @@ nav > ul {
 
 footer {
   margin-top: 30px;
-  background-color: #ddd;
+  background-color: rgb(77, 77, 77);
   padding: 20px;
 }
 
@@ -305,5 +312,5 @@ footer > span {
   display: flex;
   justify-content: flex-end;
   font-size: 0.9em;
-  color: #444;
+  color: rgb(187, 187, 187);
 }
